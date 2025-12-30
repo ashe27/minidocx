@@ -6,12 +6,15 @@
 
 #include "utils/string.hpp"
 
+#include <algorithm>
+#include <cctype>
+
 
 namespace MINIDOCX_NAMESPACE
 {
   std::string removeSpaces(std::string str) {
     std::string tmp{ std::move(str) };
-    tmp.erase(std::remove_if(tmp.begin(), tmp.end(), std::isspace), tmp.end());
+    tmp.erase(std::ranges::remove_if(tmp, [](char c) { return std::isspace(static_cast<unsigned char>(c)); }).begin(), tmp.end());
     return tmp;
   }
 }

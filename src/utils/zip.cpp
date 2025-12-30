@@ -13,6 +13,7 @@
 #include <algorithm>
 #include <memory>
 #include <sstream>
+#include <cstring>
 
 
 namespace MINIDOCX_NAMESPACE
@@ -22,7 +23,7 @@ namespace MINIDOCX_NAMESPACE
     mz_uint64 m_orig_archive_size{ 0 };
   };
 
-  static size_t readStream(void* pOpaque, size_t file_ofs, void* pBuf, size_t n) noexcept
+  static size_t readStream(void* pOpaque, mz_uint64 file_ofs, void* pBuf, size_t n)
   {
     auto* in = static_cast<std::istream*>(pOpaque);
     in->seekg(file_ofs);
@@ -35,7 +36,7 @@ namespace MINIDOCX_NAMESPACE
     return 0;
   }
 
-  static size_t writeStream(void* pOpaque, size_t file_ofs, const void* pBuf, size_t n) noexcept
+  static size_t writeStream(void* pOpaque, mz_uint64 file_ofs, const void* pBuf, size_t n)
   {
     auto* out = static_cast<std::ostream*>(pOpaque);
     out->seekp(file_ofs);
@@ -205,9 +206,9 @@ namespace MINIDOCX_NAMESPACE
     const std::streampos dst, const std::streampos src, const std::streamsize len)
   {
     static const size_t pageSize{ 20 };
-    const size_t numPage{ len / pageSize };
+    const size_t numPage{ static_cast<size_t>(len / pageSize) };
 
-    auto buf{ std::make_unique<char[]>(numPage ? pageSize : len) };
+    auto buf{ std::make_unique<char[]>(numPage ? pageSize : static_cast<size_t>(len)) };
     auto ptr = buf.get();
 
     std::streampos pptr = dst, gptr = src;
@@ -215,8 +216,8 @@ namespace MINIDOCX_NAMESPACE
       gptr = ios->seekg(gptr).read(ptr, pageSize).tellg();
       pptr = ios->seekp(pptr).write(ptr, pageSize).tellp();
     }
-    ios->seekg(gptr).read(ptr, len % pageSize);
-    ios->seekp(pptr).write(ptr, len % pageSize);
+    ios->seekg(gptr).read(ptr, static_cast<size_t>(len % pageSize));
+    ios->seekp(pptr).write(ptr, static_cast<size_t>(len % pageSize));
   }
 
   void Zip::deleteFiles(const std::vector<fs::path>& names)

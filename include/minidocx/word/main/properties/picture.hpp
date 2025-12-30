@@ -6,9 +6,6 @@
 
 #pragma once
 
-#include "word/main/properties/base.hpp"
-
-
 namespace MINIDOCX_NAMESPACE
 {
   struct PictureProperties

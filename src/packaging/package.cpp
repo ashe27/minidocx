@@ -13,6 +13,7 @@
 #include <iostream>
 #endif
 #include <sstream>
+#include <cstring>
 
 
 namespace MINIDOCX_NAMESPACE

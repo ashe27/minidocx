@@ -6,8 +6,8 @@
 
 #pragma once
 
-#include "word/main/container.hpp"
-#include "word/main/properties/section.hpp"
+#include "../../word/main/container.hpp"
+#include "../../word/main/properties/section.hpp"
 
 
 namespace MINIDOCX_NAMESPACE

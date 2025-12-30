@@ -6,11 +6,8 @@
 
 #pragma once
 
-#include "word/main/container.hpp"
-#include "utils/geometry.hpp"
-
-#include <list>
-
+#include "../../word/main/container.hpp"
+#include "../../utils/geometry.hpp"
 
 namespace MINIDOCX_NAMESPACE
 {
