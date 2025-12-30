@@ -60,37 +60,37 @@ namespace MINIDOCX_NAMESPACE
     switch (type)
     {
     case PartType::Setting:
-      return "http://purl.oclc.org/ooxml/officeDocument/relationships/settings";
+      return "http://schemas.openxmlformats.org/officeDocument/2006/relationships/settings";
 
     case PartType::FontTable:
-      return "http://purl.oclc.org/ooxml/officeDocument/relationships/fontTable";
+      return "http://schemas.openxmlformats.org/officeDocument/2006/relationships/fontTable";
 
     case PartType::Footer:
-      return "http://purl.oclc.org/ooxml/officeDocument/relationships/footer";
+      return "http://schemas.openxmlformats.org/officeDocument/2006/relationships/footer";
 
     case PartType::Header:
-      return "http://purl.oclc.org/ooxml/officeDocument/relationships/header";
+      return "http://schemas.openxmlformats.org/officeDocument/2006/relationships/header";
 
     case PartType::OfficeDocument:
-      return "http://purl.oclc.org/ooxml/officeDocument/relationships/officeDocument";
+      return "http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument";
 
     case PartType::Numbering:
-      return "http://purl.oclc.org/ooxml/officeDocument/relationships/numbering";
+      return "http://schemas.openxmlformats.org/officeDocument/2006/relationships/numbering";
 
     case PartType::Style:
-      return "http://purl.oclc.org/ooxml/officeDocument/relationships/styles";
+      return "http://schemas.openxmlformats.org/officeDocument/2006/relationships/styles";
 
     case PartType::CoreProperties:
       return "http://schemas.openxmlformats.org/package/2006/relationships/metadata/core-properties";
 
     case PartType::ExtendedProperties:
-      return "http://purl.oclc.org/ooxml/officeDocument/relationships/extendedProperties";
+      return "http://schemas.openxmlformats.org/officeDocument/2006/relationships/extended-properties";
 
     case PartType::Image:
-      return "http://purl.oclc.org/ooxml/officeDocument/relationships/image";
+      return "http://schemas.openxmlformats.org/officeDocument/2006/relationships/image";
 
     case PartType::Thumbnail:
-      return "http://purl.oclc.org/ooxml/officeDocument/relationships/metadata/thumbnail";
+      return "http://schemas.openxmlformats.org/package/2006/relationships/metadata/thumbnail";
 
     default:
       return nullptr;
@@ -115,13 +115,13 @@ namespace MINIDOCX_NAMESPACE
     case PartType::OfficeDocument:
     case PartType::Numbering:
     case PartType::Style:
-      return "http://purl.oclc.org/ooxml/wordprocessingml/main";
+      return "http://schemas.openxmlformats.org/wordprocessingml/2006/main";
 
     case PartType::CoreProperties:
       return "http://schemas.openxmlformats.org/package/2006/metadata/core-properties";
 
     case PartType::ExtendedProperties:
-      return "http://purl.oclc.org/ooxml/officeDocument/extendedProperties";
+      return "http://schemas.openxmlformats.org/officeDocument/2006/extended-properties";
 
     default:
       return nullptr;
