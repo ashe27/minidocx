@@ -755,11 +755,11 @@ namespace MINIDOCX_NAMESPACE
 
     const Rect& tblRect = tbl.rect();
 
+    const size_t colWidth = 5000 / tblRect.cols();
+
     pugi::xml_node w_tblGrid = w_tbl.append_child("w:tblGrid");
     for (size_t j = 0; j < tblRect.cols(); j++)
-      w_tblGrid.append_child("w:gridCol");
-
-    const size_t colWidth = 5000 / tblRect.cols();
+      w_tblGrid.append_child("w:gridCol").append_attribute("w:w") = colWidth;
 
     for (size_t i = 0; i < tblRect.rows(); i++) {
       pugi::xml_node w_tr = w_tbl.append_child("w:tr");
